@@ -1,4 +1,5 @@
 ﻿using System;
+
 namespace Lab1
 {
     public static class Lab1
