@@ -105,11 +105,11 @@ namespace Assignment1
                 mapHex["hex" + i] = string.Format("{0:X}", int.Parse(mapDec["dec" + i]));
             }
 
-            output.WriteLine($"{OCT,NEW_WIDTH}{DEC,NEW_WIDTH}{HEX,NEW_WIDTH}");
+            output.WriteLine($"{OCT,NEW_WIDTH}{DEC,NEW_WIDTH + 1}{HEX,NEW_WIDTH + 1}");
 
             for (int i = 1; i <= 5; i++)
             {
-                output.WriteLine($"{mapOct["oct" + i],NEW_WIDTH}{mapDec["dec" + i],NEW_WIDTH}{mapHex["hex" + i],NEW_WIDTH}");
+                output.WriteLine($"{mapOct["oct" + i],NEW_WIDTH}{mapDec["dec" + i],NEW_WIDTH + 1}{mapHex["hex" + i],NEW_WIDTH + 1}");
 
             }
 
@@ -144,10 +144,10 @@ namespace Assignment1
                 output.WriteLine($"{mapFpoint["fpoint" + i],NEW_WIDTH}");
             }
 
-            output.WriteLine($"{"Max",-7}{string.Format("{0:f3}", maxResult),NEW_WIDTH-7}");
-            output.WriteLine($"{"Min",-7}{string.Format("{0:f3}", minResult),NEW_WIDTH-7}");            
-            output.WriteLine($"{"Sum",-7}{string.Format("{0:f3}", sumResult),NEW_WIDTH-7}");
-            output.WriteLine($"{"Average",-7}{string.Format("{0:f3}", averageResult),NEW_WIDTH-7}");                 
+            output.WriteLine($"{"Min",-3}{string.Format("{0:f3}", minResult),NEW_WIDTH - 3}");
+            output.WriteLine($"{"Max",-3}{string.Format("{0:f3}", maxResult),NEW_WIDTH - 3}");        
+            output.WriteLine($"{"Sum",-3}{string.Format("{0:f3}", sumResult),NEW_WIDTH - 3}");
+            output.WriteLine($"{"Average",-7}{string.Format("{0:f3}", averageResult),NEW_WIDTH - 7}");                 
         }
     }
 }
