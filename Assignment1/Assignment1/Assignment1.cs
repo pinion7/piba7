@@ -6,11 +6,11 @@ namespace Assignment1
 {
     public static class Assignment1
     {
-        public static string octstring(string dec)
+        public static string OctString(string dec)
         {
             string result = "";
+            int newDec = int.Parse(dec);
 
-             int newDec = int.Parse(dec);
             while (true)
             {
                 if (newDec / 8 != 0)
@@ -44,38 +44,38 @@ namespace Assignment1
 
         public static double GetMax(double num1, double num2, double num3, double num4, double num5)
         {
-            double Max1 = Math.Max(num1, num2);
-            double Max2 = Math.Max(num3, num4);
-            double Max3 = num5;
+            double max1 = Math.Max(num1, num2);
+            double max2 = Math.Max(num3, num4);
+            double max3 = num5;
 
-            if (Max1 > Max2 && Max1 > Max3)
+            if (max1 > max2 && max1 > max3)
             {
-                return Max1;
+                return max1;
             }
-            else if (Max2 > Max3)
+            else if (max2 > max3)
             {
-                return Max2;
+                return max2;
             }
-            return Max3;
+            return max3;
 
             // 다섯 숫자 중 최대값 구하는 함수
         }
 
         public static double GetMin(double num1, double num2, double num3, double num4, double num5)
         {
-            double Min1 = Math.Min(num1, num2);
-            double Min2 = Math.Min(num3, num4);
-            double Min3 = num5;
+            double min1 = Math.Min(num1, num2);
+            double min2 = Math.Min(num3, num4);
+            double min3 = num5;
 
-            if (Min1 < Min2 && Min1 < Min3)
+            if (min1 < min2 && min1 < min3)
             {
-                return Min1;
+                return min1;
             }
-            else if (Min2 < Min3)
+            else if (min2 < min3)
             {
-                return Min2;
+                return min2;
             }
-            return Min3;
+            return min3;
 
             // 다섯 숫자 중 최ㅅ값 구하는 함수
         }
@@ -83,10 +83,10 @@ namespace Assignment1
 
         public static void PrintIntegers(StreamReader input, StreamWriter output, int width)
         {
-            const string oct = "oct";
-            const string dec = "dec";
-            const string hex = "hex";
-            const int newWidth = 14;
+            const string OCT = "oct";
+            const string DEC = "dec";
+            const string HEX = "hex";
+            const int NEW_WIDTH = 14;
          
             Dictionary<string, string> mapDec = new Dictionary<string, string>();
             var mapOct = new Dictionary<string, string>();
@@ -99,17 +99,17 @@ namespace Assignment1
                 mapDec["dec" + i] = mapDec["dec" + i].Trim();
 
                 mapOct.Add(string.Format("oct{0}", i.ToString()), i.ToString());
-                mapOct["oct" + i] = octstring(mapDec["dec" + i]);
+                mapOct["oct" + i] = OctString(mapDec["dec" + i]);
                 
                 mapHex.Add(string.Format("hex{0}", i.ToString()), i.ToString());
                 mapHex["hex" + i] = string.Format("{0:X}", int.Parse(mapDec["dec" + i]));
             }
 
-            output.WriteLine($"{oct,newWidth}{dec,newWidth}{hex,newWidth}");
+            output.WriteLine($"{OCT,NEW_WIDTH}{DEC,NEW_WIDTH}{HEX,NEW_WIDTH}");
 
             for (int i = 1; i <= 5; i++)
             {
-                output.WriteLine($"{mapOct["oct" + i],newWidth}{mapDec["dec" + i],newWidth}{mapHex["hex" + i],newWidth}");
+                output.WriteLine($"{mapOct["oct" + i],NEW_WIDTH}{mapDec["dec" + i],NEW_WIDTH}{mapHex["hex" + i],NEW_WIDTH}");
 
             }
 
@@ -118,7 +118,7 @@ namespace Assignment1
         
         public static void PrintStats(StreamReader input, StreamWriter output)
         {
-            const int newWidth = 28;
+            const int NEW_WIDTH = 28;
 
             var mapFpoint = new Dictionary<string, string>();
 
@@ -141,13 +141,13 @@ namespace Assignment1
 
             for (int i = 1; i <= 5; i++)
             {
-                output.WriteLine($"{mapFpoint["fpoint" + i],newWidth}");
+                output.WriteLine($"{mapFpoint["fpoint" + i],NEW_WIDTH}");
             }
 
-            output.WriteLine($"{"Min",-newWidth / 2}{string.Format("{0:f3}", maxResult),newWidth / 2}");
-            output.WriteLine($"{"Max",-newWidth / 2}{string.Format("{0:f3}", minResult),newWidth / 2}");
-            output.WriteLine($"{"Sum",-newWidth / 2}{string.Format("{0:f3}", sumResult),newWidth / 2}");
-            output.WriteLine($"{"Average",-newWidth / 2}{string.Format("{0:f3}", averageResult),newWidth / 2}");                 
+            output.WriteLine($"{"Min",-NEW_WIDTH / 2}{string.Format("{0:f3}", maxResult),NEW_WIDTH / 2}");
+            output.WriteLine($"{"Max",-NEW_WIDTH / 2}{string.Format("{0:f3}", minResult),NEW_WIDTH / 2}");
+            output.WriteLine($"{"Sum",-NEW_WIDTH / 2}{string.Format("{0:f3}", sumResult),NEW_WIDTH / 2}");
+            output.WriteLine($"{"Average",-NEW_WIDTH / 2}{string.Format("{0:f3}", averageResult),NEW_WIDTH / 2}");                 
         }
     }
 }
