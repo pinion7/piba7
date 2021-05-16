@@ -87,7 +87,7 @@ namespace Assignment1
             const string DEC = "dec";
             const string HEX = "hex";
             const int NEW_WIDTH = 10;
-         
+                     
             Dictionary<string, string> mapDec = new Dictionary<string, string>();
             var mapOct = new Dictionary<string, string>();
             var mapHex = new Dictionary<string, string>();
@@ -144,10 +144,10 @@ namespace Assignment1
                 output.WriteLine($"{mapFpoint["fpoint" + i],NEW_WIDTH}");
             }
 
-            output.WriteLine($"{"Max",-7 / 2}{string.Format("{0:f3}", minResult),NEW_WIDTH / 2}");
-            output.WriteLine($"{"Min",-7 / 2}{string.Format("{0:f3}", maxResult),NEW_WIDTH / 2}");            
-            output.WriteLine($"{"Sum",-7 / 2}{string.Format("{0:f3}", sumResult),NEW_WIDTH / 2}");
-            output.WriteLine($"{"Average",-7 / 2}{string.Format("{0:f3}", averageResult),NEW_WIDTH / 2}");                 
+            output.WriteLine($"{"Max",-7}{string.Format("{0:f3}", maxResult),NEW_WIDTH-7}");
+            output.WriteLine($"{"Min",-7}{string.Format("{0:f3}", minResult),NEW_WIDTH-7}");            
+            output.WriteLine($"{"Sum",-7}{string.Format("{0:f3}", sumResult),NEW_WIDTH-7}");
+            output.WriteLine($"{"Average",-7}{string.Format("{0:f3}", averageResult),NEW_WIDTH-7}");                 
         }
     }
 }
