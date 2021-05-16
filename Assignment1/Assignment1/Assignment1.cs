@@ -83,9 +83,6 @@ namespace Assignment1
 
         public static void PrintIntegers(StreamReader input, StreamWriter output, int width)
         {
-            const string OCT = "oct";
-            const string DEC = "dec";
-            const string HEX = "hex";
             const int NEW_WIDTH = 11;
                      
             Dictionary<string, string> mapDec = new Dictionary<string, string>();
