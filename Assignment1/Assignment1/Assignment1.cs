@@ -83,7 +83,7 @@ namespace Assignment1
 
         public static void PrintIntegers(StreamReader input, StreamWriter output, int width)
         {
-            const int NEW_WIDTH = 11;
+            const int NEW_WIDTH = 10;
                      
             Dictionary<string, string> mapDec = new Dictionary<string, string>();
             var mapOct = new Dictionary<string, string>();
