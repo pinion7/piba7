@@ -6,7 +6,7 @@ namespace Assignment1
 {
     public static class Assignment1
     {
-        public static string OctString(string dec)
+        public static string ConvertToOct(string dec)
         {
             string result = "";
             int newDec = int.Parse(dec);
@@ -86,7 +86,7 @@ namespace Assignment1
             const string OCT = "oct";
             const string DEC = "dec";
             const string HEX = "hex";
-            const int NEW_WIDTH = 14;
+            const int NEW_WIDTH = 10;
          
             Dictionary<string, string> mapDec = new Dictionary<string, string>();
             var mapOct = new Dictionary<string, string>();
@@ -99,7 +99,7 @@ namespace Assignment1
                 mapDec["dec" + i] = mapDec["dec" + i].Trim();
 
                 mapOct.Add(string.Format("oct{0}", i.ToString()), i.ToString());
-                mapOct["oct" + i] = OctString(mapDec["dec" + i]);
+                mapOct["oct" + i] = ConvertToOct(mapDec["dec" + i]);
                 
                 mapHex.Add(string.Format("hex{0}", i.ToString()), i.ToString());
                 mapHex["hex" + i] = string.Format("{0:X}", int.Parse(mapDec["dec" + i]));
@@ -118,7 +118,7 @@ namespace Assignment1
         
         public static void PrintStats(StreamReader input, StreamWriter output)
         {
-            const int NEW_WIDTH = 28;
+            const int NEW_WIDTH = 25;
 
             var mapFpoint = new Dictionary<string, string>();
 
@@ -144,10 +144,10 @@ namespace Assignment1
                 output.WriteLine($"{mapFpoint["fpoint" + i],NEW_WIDTH}");
             }
 
-            output.WriteLine($"{"Min",-NEW_WIDTH / 2}{string.Format("{0:f3}", maxResult),NEW_WIDTH / 2}");
-            output.WriteLine($"{"Max",-NEW_WIDTH / 2}{string.Format("{0:f3}", minResult),NEW_WIDTH / 2}");
-            output.WriteLine($"{"Sum",-NEW_WIDTH / 2}{string.Format("{0:f3}", sumResult),NEW_WIDTH / 2}");
-            output.WriteLine($"{"Average",-NEW_WIDTH / 2}{string.Format("{0:f3}", averageResult),NEW_WIDTH / 2}");                 
+            output.WriteLine($"{"Max",-7 / 2}{string.Format("{0:f3}", minResult),NEW_WIDTH / 2}");
+            output.WriteLine($"{"Min",-7 / 2}{string.Format("{0:f3}", maxResult),NEW_WIDTH / 2}");            
+            output.WriteLine($"{"Sum",-7 / 2}{string.Format("{0:f3}", sumResult),NEW_WIDTH / 2}");
+            output.WriteLine($"{"Average",-7 / 2}{string.Format("{0:f3}", averageResult),NEW_WIDTH / 2}");                 
         }
     }
 }
