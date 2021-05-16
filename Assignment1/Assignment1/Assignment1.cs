@@ -59,7 +59,7 @@ namespace Assignment1
             return max3;
 
             // 다섯 숫자 중 최대값 구하는 함수
-        }
+            }
 
         public static double GetMin(double num1, double num2, double num3, double num4, double num5)
         {
@@ -77,7 +77,7 @@ namespace Assignment1
             }
             return min3;
 
-            // 다섯 숫자 중 최ㅅ값 구하는 함수
+            // 다섯 숫자 중 최{값 구하는 함수
         }
 
 
@@ -86,7 +86,7 @@ namespace Assignment1
             const string OCT = "oct";
             const string DEC = "dec";
             const string HEX = "hex";
-            const int NEW_WIDTH = 10;
+            const int NEW_WIDTH = 11;
                      
             Dictionary<string, string> mapDec = new Dictionary<string, string>();
             var mapOct = new Dictionary<string, string>();
@@ -105,7 +105,7 @@ namespace Assignment1
                 mapHex["hex" + i] = string.Format("{0:X}", int.Parse(mapDec["dec" + i]));
             }
 
-            output.WriteLine($"{OCT,NEW_WIDTH}{DEC,NEW_WIDTH + 1}{HEX,NEW_WIDTH + 1}");
+            output.WriteLine($"{"oct",NEW_WIDTH}{"dec",NEW_WIDTH + 1}{"hex",NEW_WIDTH + 1}");
 
             for (int i = 1; i <= 5; i++)
             {
