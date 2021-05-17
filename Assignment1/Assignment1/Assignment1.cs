@@ -55,19 +55,6 @@ namespace Assignment1
                     output.WriteLine($"{oct[i],10}{dec[i],11}{hex[i],11}");
                 }
             }
-            else if (dec[0].Length >= 18 || dec[1].Length >= 18 || dec[2].Length >= 18 || dec[3].Length >= 18 || dec[4].Length >= 18)
-            {
-                output.Write("oct".PadLeft(width + 1));
-                output.Write("dec".PadLeft(width + 2));
-                output.WriteLine("hex".PadLeft(width + 2));
-
-                for (int i = 0; i < 5; ++i)
-                {
-                    output.Write(oct[i].PadLeft(width + 1));
-                    output.Write(dec[i].PadLeft(width + 2));
-                    output.WriteLine(hex[i].PadLeft(width + 2));
-                }
-            }
             else
             {
                 output.Write("oct".PadLeft(width));
