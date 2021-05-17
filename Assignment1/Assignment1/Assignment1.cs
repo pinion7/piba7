@@ -53,7 +53,7 @@ namespace Assignment1
 
                 for (int i = 0; i < 5; ++i)
                 {
-                    output.WriteLine($"{oct[0],10}{dec[0],11}{hex[0],11}");
+                    output.WriteLine($"{oct[i],10}{dec[i],11}{hex[i],11}");
                 }
             }
             else
