@@ -31,22 +31,62 @@ namespace Assignment1
             // 8로 나누었을 때 몫이 0이 아니면 나머지를 합산한다
             // 몫을 다시 8로 나누는 것을 반복하며 0이 아닐때마다 계속 나머지를 합산한다(다만 앞에서 부터 붙인다)
             // 8로 나누었을 때 몫이 0이면, 마지막으로 나머지를 합산하고 반복문을 끝낸다
+        }                   
+
+        public static void PrintIntegers(StreamReader input, StreamWriter output, int width)
+        {
+            string[] dec = new string[5];
+            string[] oct = new string[5];
+            string[] hex = new string[5];
+            
+            for (int i = 0; i < 5; ++i)
+            {
+                dec[i] = input.ReadLine().Trim();
+                oct[i] = ConvertToOct(dec[i]);
+                hex[i] = string.Format("{0:X}", int.Parse(dec[i]));
+            }
+
+
+            if (width <= 10)
+            {
+                output.WriteLine($"{"oct",10}{"dec",11}{"hex",11}");
+
+                for (int i = 0; i < 5; ++i)
+                {
+                    output.WriteLine($"{oct[0],10}{dec[0],11}{hex[0],11}");
+                }
+            }
+            else
+            {
+                output.Write("oct".PadLeft(width));
+                output.Write("dec".PadLeft(width + 1));
+                output.WriteLine("hex".PadLeft(width + 1));
+
+                for (int i = 0; i < 5; ++i)
+                {
+                    output.Write(oct[i].PadLeft(width));
+                    output.Write(dec[i].PadLeft(width + 1));
+                    output.WriteLine(hex[i].PadLeft(width + 1));
+                }
+            }
+            
         }
 
-        public static double GetSum(double num1, double num2, double num3, double num4, double num5)
+
+        public static double GetSum(string num1, string num2, string num3, string num4, string num5)
         {
-            double sum = num1 + num2 + num3 + num4 + num5;
+            double sum = double.Parse(num1) + double.Parse(num2) + double.Parse(num3) + double.Parse(num4) + double.Parse(num5);
             return sum;
+
 
             // 다섯 숫자 합계 구하는 함수
         }
 
-
-        public static double GetMax(double num1, double num2, double num3, double num4, double num5)
+        public static double GetMax(string num1, string num2, string num3, string num4, string num5)
         {
-            double max1 = Math.Max(num1, num2);
-            double max2 = Math.Max(num3, num4);
-            double max3 = num5;
+            double max1 = Math.Max(double.Parse(num1), double.Parse(num2));
+            double max2 = Math.Max(double.Parse(num3), double.Parse(num4));
+            double max3 = double.Parse(num5);
 
             if (max1 > max2 && max1 > max3)
             {
@@ -59,13 +99,13 @@ namespace Assignment1
             return max3;
 
             // 다섯 숫자 중 최대값 구하는 함수
-            }
+        }
 
-        public static double GetMin(double num1, double num2, double num3, double num4, double num5)
+        public static double GetMin(string num1, string num2, string num3, string num4, string num5)
         {
-            double min1 = Math.Min(num1, num2);
-            double min2 = Math.Min(num3, num4);
-            double min3 = num5;
+            double min1 = Math.Min(double.Parse(num1), double.Parse(num2));
+            double min2 = Math.Min(double.Parse(num3), double.Parse(num4));
+            double min3 = double.Parse(num5);
 
             if (min1 < min2 && min1 < min3)
             {
@@ -77,68 +117,29 @@ namespace Assignment1
             }
             return min3;
 
-            // 다섯 숫자 중 최{값 구하는 함수
+            // 다섯 숫자 중 최소값 구하는 함수
         }
 
-
-        public static void PrintIntegers(StreamReader input, StreamWriter output, int width)
-        {
-            const int NEW_WIDTH = 10;
-                     
-            Dictionary<string, string> mapDec = new Dictionary<string, string>();
-            var mapOct = new Dictionary<string, string>();
-            var mapHex = new Dictionary<string, string>();
-
-            for (int i = 1; i <= 5; i++)
-            {
-                mapDec.Add(string.Format("dec{0}", i.ToString()), i.ToString());
-                mapDec["dec" + i] = input.ReadLine();
-                mapDec["dec" + i] = mapDec["dec" + i].Trim();
-
-                mapOct.Add(string.Format("oct{0}", i.ToString()), i.ToString());
-                mapOct["oct" + i] = ConvertToOct(mapDec["dec" + i]);
-                
-                mapHex.Add(string.Format("hex{0}", i.ToString()), i.ToString());
-                mapHex["hex" + i] = string.Format("{0:X}", int.Parse(mapDec["dec" + i]));
-            }
-
-            output.WriteLine($"{"oct",NEW_WIDTH}{"dec",NEW_WIDTH + 1}{"hex",NEW_WIDTH + 1}");
-
-            for (int i = 1; i <= 5; i++)
-            {
-                output.WriteLine($"{mapOct["oct" + i],NEW_WIDTH}{mapDec["dec" + i],NEW_WIDTH + 1}{mapHex["hex" + i],NEW_WIDTH + 1}");
-
-            }
-
-        }
-            
-        
         public static void PrintStats(StreamReader input, StreamWriter output)
         {
             const int NEW_WIDTH = 25;
 
-            var mapFpoint = new Dictionary<string, string>();
+            string[] floatPoint = new string[5];
 
-            for (int i = 1; i <= 5; i++)
+            for (int i = 0; i < 5; ++i)
             {
-                mapFpoint.Add(string.Format("fpoint{0}", i.ToString()), i.ToString());
-                mapFpoint["fpoint" + i] = input.ReadLine();
+                floatPoint[i] = input.ReadLine();
             }
-            
-            double maxResult = GetMax(double.Parse(mapFpoint["fpoint1"]), double.Parse(mapFpoint["fpoint2"]), double.Parse(mapFpoint["fpoint3"]), double.Parse(mapFpoint["fpoint4"]), double.Parse(mapFpoint["fpoint5"]));
-            double minResult = GetMin(double.Parse(mapFpoint["fpoint1"]), double.Parse(mapFpoint["fpoint2"]), double.Parse(mapFpoint["fpoint3"]), double.Parse(mapFpoint["fpoint4"]), double.Parse(mapFpoint["fpoint5"]));
-            double sumResult = GetSum(double.Parse(mapFpoint["fpoint1"]), double.Parse(mapFpoint["fpoint2"]), double.Parse(mapFpoint["fpoint3"]), double.Parse(mapFpoint["fpoint4"]), double.Parse(mapFpoint["fpoint5"]));
+
+            double maxResult = GetMax(floatPoint[0], floatPoint[1], floatPoint[2], floatPoint[3], floatPoint[4]);
+            double minResult = GetMin(floatPoint[0], floatPoint[1], floatPoint[2], floatPoint[3], floatPoint[4]);
+            double sumResult = GetSum(floatPoint[0], floatPoint[1], floatPoint[2], floatPoint[3], floatPoint[4]);
             double averageResult = sumResult / 5;
 
-            for (int i = 1; i <= 5; i++)
-            {
-                mapFpoint["fpoint" + i] = string.Format("{0:f3}", double.Parse(mapFpoint["fpoint" + i]));
-            }
 
-
-            for (int i = 1; i <= 5; i++)
+            for (int i = 0; i < 5; ++i)
             {
-                output.WriteLine($"{mapFpoint["fpoint" + i],NEW_WIDTH}");
+                output.WriteLine($"{string.Format("{0:f3}", double.Parse(floatPoint[i])),NEW_WIDTH}");
             }
 
             output.WriteLine($"{"Min",-3}{string.Format("{0:f3}", minResult),NEW_WIDTH - 3}");
