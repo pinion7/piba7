@@ -8,43 +8,48 @@ namespace Lab3
     {
         public static double CalculateTotalCost(StreamReader input)
         {
-            string priceOfFirstFood = input.ReadLine();
-            string priceOfSecondFood = input.ReadLine();
-            string priceOfThirdFood = input.ReadLine();
-            string priceOfFourthFood = input.ReadLine();
-            string priceOfFifthFood = input.ReadLine();
+            string[] priceOfFood = new string[5];
+            string percentOfTip = "";
+            double[] taxOfFood = new double[5];
+            double[] tipOfFood = new double[5];
+            double totalCost = 0;
 
-            double taxOfFirstFood = double.Parse(priceOfFirstFood) * 0.05;
-            double taxOfSecondFood = double.Parse(priceOfFirstFood) * 0.05;
-            double taxOfThirdFood = double.Parse(priceOfFirstFood) * 0.05;
-            double taxOfFourthFood = double.Parse(priceOfFirstFood) * 0.05;
-            double taxOfFifthFood = double.Parse(priceOfFirstFood) * 0.05;
 
-            var mapCost = new Dictionary<string, string>();
-
-            for (int i = 1; i <= 5; i++)
-            { 
-                mapCost.Add("cost{0}", i.ToString());
-                mapCost["cost{0}" + i] = input.ReadLine()
-                mapCost[i] = double.Parse();
-            }
-
-            for (int i = 1; i <= 5; i++)
+            for (int i = 0; i < 5; ++i)
             {
-                mapCost["cost" + i] * 0.05 
-            
+                priceOfFood[i] = input.ReadLine();
             }
-            return 0;
+
+            for (int i = 0; i < 5; ++i)
+            { 
+                if (percentOfTip == "")
+                {
+                    percentOfTip = input.ReadLine();
+                }
+
+                taxOfFood[i] = double.Parse(priceOfFood[i]) * 0.05;
+                tipOfFood[i] = (double.Parse(priceOfFood[i]) + taxOfFood[i]) * (double.Parse(percentOfTip) / 100);
+                totalCost = totalCost + double.Parse(priceOfFood[i]) + taxOfFood[i] + tipOfFood[i];
+            }
+
+            totalCost = Math.Round(totalCost, 2);
+            return totalCost;
         }
 
         public static double CalculateIndividualCost(StreamReader input, double totalCost)
         {
-            return 0;
+            string numberOfPeople = input.ReadLine();
+            double individualCost = Math.Round((totalCost / double.Parse(numberOfPeople)), 2);
+
+            return individualCost;
         }
 
         public static uint CalculatePayerCount(StreamReader input, double totalCost)
         {
-            return 0;
+            string dutchPayPrice = input.ReadLine();
+            uint payerCount = (uint)Math.Ceiling(totalCost / double.Parse(dutchPayPrice));
+
+            return payerCount;
         }
     }
 }
