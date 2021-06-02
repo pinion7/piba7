@@ -6,6 +6,11 @@ namespace Lab5
     {
         public static bool TryFixData(uint[] usersPerDay, double[] revenuePerDay)
         {
+            if (usersPerDay.Length != revenuePerDay.Length)
+            {
+                return false;
+            }
+
             int count = 0;
             for (int i = 0; i < usersPerDay.Length; ++i)
             {
@@ -55,13 +60,13 @@ namespace Lab5
                     }
                 }               
             }
-            if (usersPerDay.Length != revenuePerDay.Length || count == usersPerDay.Length)
-            {
-                return false;
-            }
-            else
+            if (count != usersPerDay.Length)
             {
                 return true;
+            }
+            else 
+            {
+                return false;
             }
         }
 
@@ -104,22 +109,32 @@ namespace Lab5
                     }
                 }
             }
-            return count;
+            if (count > 0)
+            {
+                return count;
+            }
+            else
+            {
+                return 0;
+            }
         }
 
         public static double CalculateTotalRevenue(double[] revenuePerDay, uint start, uint end)
         {
-            if (revenuePerDay.Length == 0)
+            double totalRevenue = 0;
+
+            if (revenuePerDay.Length != 0 && revenuePerDay.Length > end && start <= end)
+            {
+                for (uint i = start; i <= end; ++i)
+                {
+                    totalRevenue += revenuePerDay[i];
+                }
+                return totalRevenue;
+            }
+            else
             {
                 return -1;
             }
-
-            double totalRevenue = 0;
-            for (uint i = start; i <= end; ++i)
-            {
-                totalRevenue += revenuePerDay[i];
-            }
-            return totalRevenue;
         }
     }
 }
