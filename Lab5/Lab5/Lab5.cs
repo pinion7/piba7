@@ -16,14 +16,14 @@ namespace Lab5
             {
                 if (usersPerDay[i] <= 10 && usersPerDay[i] >= 0)
                 {
-                     if (Math.Round((double)usersPerDay[i] / 2, 2) != revenuePerDay[i])
-                     {
+                    if (Math.Round((double)usersPerDay[i] / 2, 2) != revenuePerDay[i])
+                    {
                         revenuePerDay[i] = Math.Round((double)usersPerDay[i] / 2, 2);
-                     }
-                     else
-                     {
+                    }
+                    else
+                    {
                         count++;
-                     }
+                    }
                 }
                 else if (usersPerDay[i] <= 100 && usersPerDay[i] > 10)
                 {
