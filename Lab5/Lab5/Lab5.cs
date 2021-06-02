@@ -16,18 +16,18 @@ namespace Lab5
             {
                 if (usersPerDay[i] <= 10 && usersPerDay[i] >= 0)
                 {
-                    if ((double)usersPerDay[i] / 2 != revenuePerDay[i])
-                    {
+                     if (Math.Round((double)usersPerDay[i] / 2, 2) != revenuePerDay[i])
+                     {
                         revenuePerDay[i] = Math.Round((double)usersPerDay[i] / 2, 2);
-                    }
-                    else
-                    {
+                     }
+                     else
+                     {
                         count++;
-                    }
+                     }
                 }
                 else if (usersPerDay[i] <= 100 && usersPerDay[i] > 10)
                 {
-                    if ((16 * (double)usersPerDay[i] / 5 - 27) != revenuePerDay[i])
+                    if (Math.Round(16 * (double)usersPerDay[i] / 5 - 27, 2) != revenuePerDay[i])
                     {
                         revenuePerDay[i] = Math.Round(16 * (double)usersPerDay[i] / 5 - 27, 2);
                     }
@@ -38,7 +38,7 @@ namespace Lab5
                 }
                 else if (usersPerDay[i] <= 1000 && usersPerDay[i] > 100)
                 {
-                    if ((double)(usersPerDay[i] * usersPerDay[i]) / 4 - 2 * (double)usersPerDay[i] - 2007 != revenuePerDay[i])
+                    if (Math.Round((double)(usersPerDay[i] * usersPerDay[i]) / 4 - 2 * (double)usersPerDay[i] - 2007, 2) != revenuePerDay[i])
                     {
                         revenuePerDay[i] = Math.Round((double)(usersPerDay[i] * usersPerDay[i]) / 4 - 2 * (double)usersPerDay[i] - 2007, 2);
                     }
@@ -50,7 +50,7 @@ namespace Lab5
                 }
                 else if (usersPerDay[i] > 1000)
                 {
-                    if ((245743 + (double)usersPerDay[i] / 4) != revenuePerDay[i])
+                    if (Math.Round(245743 + (double)usersPerDay[i] / 4, 2) != revenuePerDay[i])
                     {
                         revenuePerDay[i] = Math.Round(245743 + (double)usersPerDay[i] / 4, 2);
                     }
@@ -64,10 +64,7 @@ namespace Lab5
             {
                 return true;
             }
-            else 
-            {
-                return false;
-            }
+            return false;
         }
 
         public static int GetInvalidEntryCount(uint[] usersPerDay, double[] revenuePerDay)
@@ -82,41 +79,34 @@ namespace Lab5
             {
                 if (usersPerDay[i] <= 10 && usersPerDay[i] >= 0)
                 {
-                    if ((double)usersPerDay[i] / 2 != revenuePerDay[i])
+                    if (Math.Round((double)usersPerDay[i] / 2, 2) != revenuePerDay[i])
                     {
                         count++;
                     }
                 }
                 else if (usersPerDay[i] <= 100 && usersPerDay[i] > 10)
                 {
-                    if (16 * (double)usersPerDay[i] / 5 - 27 != revenuePerDay[i])
+                    if (Math.Round(16 * (double)usersPerDay[i] / 5 - 27, 2) != revenuePerDay[i])
                     {
                         count++;
                     }
                 }
                 else if (usersPerDay[i] <= 1000 && usersPerDay[i] > 100)
                 {
-                    if ((double)(usersPerDay[i] * usersPerDay[i]) / 4 - 2 * usersPerDay[i] - 2007 != revenuePerDay[i])
+                    if (Math.Round((double)(usersPerDay[i] * usersPerDay[i]) / 4 - 2 * usersPerDay[i] - 2007, 2) != revenuePerDay[i])
                     {
                         count++;
                     }
                 }
                 else if (usersPerDay[i] > 1000)
                 {
-                    if (245743 + (double)usersPerDay[i] / 4 != revenuePerDay[i])
+                    if (Math.Round(245743 + (double)usersPerDay[i] / 4, 2) != revenuePerDay[i])
                     {
                         count++;
                     }
                 }
             }
-            if (count > 0)
-            {
-                return count;
-            }
-            else
-            {
-                return 0;
-            }
+            return count;
         }
 
         public static double CalculateTotalRevenue(double[] revenuePerDay, uint start, uint end)
