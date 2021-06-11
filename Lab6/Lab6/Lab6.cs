@@ -21,7 +21,7 @@ namespace Lab6
             return result;
         }
 
-        public static int[,] TransformArray(int[,] data, EMode value)
+        public static void TransformArray(int[,] data, EMode value)
         {
             int[,] result = new int[data.GetLength(0), data.GetLength(1)];
 
@@ -86,8 +86,6 @@ namespace Lab6
                     data[i, j] = result[i, j];
                 }
             }
-
-            return data;
         }
     }
 }
