@@ -7,8 +7,14 @@ namespace Assignment2
         public static char[,] Draw(uint width, uint height, EShape shape)
         {
             char[,] result = new char[height + 4, width + 4];
+            char[,] blank = new char[0, 0];
 
-            if (shape == EShape.Rectangle)
+            if (width == 0 || height == 0)
+            {
+                result = blank;
+            }
+
+            else if (shape == EShape.Rectangle)
             {
                 for (int i = 0; i < result.GetLength(0); ++i)
                 {
@@ -158,9 +164,8 @@ namespace Assignment2
                 }
             }
 
-            else if (width == 0 || height == 0)
+            else
             {
-                char[,] blank = new char[0, 0];
                 result = blank;
             }
 
@@ -170,29 +175,33 @@ namespace Assignment2
 
         public static bool IsShape(char[,] canvas, EShape shape)
         {
-            bool bresult = !(canvas.GetLength(0) != 0 && canvas.GetLength(1) != 0);
+            bool bResult = false;
 
-            if (canvas.GetLength(0) == canvas.GetLength(1) && canvas.GetLength(1) % 2 != 0 && shape == EShape.Circle)
+            if (canvas.GetLength(0) != 0 && canvas.GetLength(1) != 0)
             {
-                bresult = true;
+
+                if (canvas.GetLength(0) == canvas.GetLength(1) && canvas.GetLength(1) % 2 != 0 && shape == EShape.Circle)
+                {
+                    bResult = true;
+                }
+
+                else if (canvas.GetLength(0) == canvas.GetLength(1) && canvas[2, 2] == '*' && canvas[2, canvas.GetLength(1) - 3] == ' ' && shape == EShape.IsoscelesRightTriangle)
+                {
+                    bResult = true;
+                }
+
+                else if (canvas.GetLength(1) - 4 == (canvas.GetLength(0) - 4) * 2 - 1 && shape == EShape.IsoscelesTriangle)
+                {
+                    bResult = true;
+                }
+
+                else if (canvas[2, 2] == '*' && canvas[2, canvas.GetLength(1) - 3] == '*' && shape == EShape.Rectangle)
+                {
+                    bResult = true;
+                }
             }
 
-            else if (canvas.GetLength(0) == canvas.GetLength(1) && canvas[2, 2] == '*' && canvas[2, canvas.GetLength(1) - 3] == ' ' && shape == EShape.IsoscelesRightTriangle)
-            {
-                bresult = true;
-            }
-
-            else if (canvas.GetLength(1) - 4 == (canvas.GetLength(0) - 4) * 2 - 1 && shape == EShape.IsoscelesTriangle)
-            {
-                bresult = true;
-            }
-
-            else if (canvas[2, 2] == '*' && canvas[2, canvas.GetLength(1) - 3] == '*' && shape == EShape.Rectangle)
-            {
-                bresult = true;
-            }
-
-            return bresult;
+            return bResult;
         }
 
     }
