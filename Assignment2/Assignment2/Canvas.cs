@@ -116,7 +116,7 @@ namespace Assignment2
 
                         else if (i >= 2 && (j < result.GetLength(1) / 2 + z) && (j > result.GetLength(1) / 2 - z))
                         {
-                            result[i, j] = '*';                            
+                            result[i, j] = '*';
                         }
 
                         else
@@ -158,9 +158,9 @@ namespace Assignment2
                 }
             }
 
-            else
+            else if (width == 0 || height == 0)
             {
-                char[,] blank = new char[0,0];
+                char[,] blank = new char[0, 0];
                 result = blank;
             }
 
@@ -170,29 +170,29 @@ namespace Assignment2
 
         public static bool IsShape(char[,] canvas, EShape shape)
         {
-            bool result = !(canvas.GetLength(0) != 0 && canvas.GetLength(1) != 0);
+            bool bresult = !(canvas.GetLength(0) != 0 && canvas.GetLength(1) != 0);
 
             if (canvas.GetLength(0) == canvas.GetLength(1) && canvas.GetLength(1) % 2 != 0 && shape == EShape.Circle)
             {
-                result = true;
+                bresult = true;
             }
 
-            else if (canvas[2, 2] == '*' && canvas[2, canvas.GetLength(1) - 3] == ' ' && shape == EShape.IsoscelesRightTriangle)
+            else if (canvas.GetLength(0) == canvas.GetLength(1) && canvas[2, 2] == '*' && canvas[2, canvas.GetLength(1) - 3] == ' ' && shape == EShape.IsoscelesRightTriangle)
             {
-                result = true;
+                bresult = true;
             }
 
             else if (canvas.GetLength(1) - 4 == (canvas.GetLength(0) - 4) * 2 - 1 && shape == EShape.IsoscelesTriangle)
             {
-                result = true;
+                bresult = true;
             }
 
             else if (canvas[2, 2] == '*' && canvas[2, canvas.GetLength(1) - 3] == '*' && shape == EShape.Rectangle)
             {
-                result = true;
+                bresult = true;
             }
 
-            return result;
+            return bresult;
         }
 
     }
