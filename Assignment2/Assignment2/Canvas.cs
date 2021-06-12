@@ -191,6 +191,21 @@ namespace Assignment2
                     {
                         bResult = true;
                     }
+
+                    else if (canvas.GetLength(0) == 1 && shape == EShape.IsoscelesRightTriangle)
+                    {
+                        bResult = true;
+                    }
+
+                    else if (canvas.GetLength(0) == 1 && shape == EShape.IsoscelesTriangle)
+                    {
+                        bResult = true;
+                    }
+
+                    else if (canvas.GetLength(0) == 1 && shape == EShape.Rectangle)
+                    {
+                        bResult = true;
+                    }
                 }
 
                 else if (canvas.GetLength(1) - 4 == (canvas.GetLength(0) - 4) * 2 - 1 && shape == EShape.IsoscelesTriangle)
