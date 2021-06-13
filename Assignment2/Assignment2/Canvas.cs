@@ -184,6 +184,11 @@ namespace Assignment2
                     bResult = true;
                 }
 
+                else if ((canvas.GetLength(0) != canvas.GetLength(1) || canvas.GetLength(1) % 2 == 0) && shape == EShape.Circle)
+                {
+                    bResult = false;
+                }
+
                 else if (canvas.GetLength(1) - 4 == (canvas.GetLength(0) - 4) * 2 - 1 && shape == EShape.IsoscelesTriangle)
                 {
                     bResult = true;
@@ -194,27 +199,32 @@ namespace Assignment2
                     bResult = false;
                 }
 
-                else if (canvas.GetLength(0) - 4 == 1 && canvas.GetLength(1) - 4 == 1 && canvas[2, 2] == '*' && shape == EShape.IsoscelesRightTriangle)
-                {
-                    bResult = true;
-                }
+                //else if (canvas.GetLength(0) - 4 == 1 && canvas.GetLength(1) - 4 == 1 && canvas[2, 2] == '*' && shape == EShape.IsoscelesRightTriangle)
+                //{
+                //    bResult = true;
+                //}
 
                 else if ((canvas.GetLength(0) != canvas.GetLength(1) || canvas[2, 2] != '*' || canvas[2, canvas.GetLength(1) - 3] != ' ') && shape == EShape.IsoscelesRightTriangle)
                 {
                     bResult = false;
                 }
 
-                else if (canvas.GetLength(0) == canvas.GetLength(1) && canvas[2, 2] == '*' && canvas[2, canvas.GetLength(1) - 3] == ' ' && shape == EShape.IsoscelesRightTriangle)
-                {
-                    bResult = true;
-                }
+                //else if (canvas.GetLength(0) == canvas.GetLength(1) && canvas[2, 2] == '*' && canvas[2, canvas.GetLength(1) - 3] == ' ' && shape == EShape.IsoscelesRightTriangle)
+                //{
+                //    bResult = true;
+                //}
 
                 else if ((canvas[2, 2] != '*' || canvas[2, canvas.GetLength(1) - 3] != '*') && shape == EShape.Rectangle)
                 {
                     bResult = false;
                 }
 
-                else if (canvas[2, 2] == '*' && canvas[2, canvas.GetLength(1) - 3] == '*' && shape == EShape.Rectangle)
+                //else if (canvas[2, 2] == '*' && canvas[2, canvas.GetLength(1) - 3] == '*' && shape == EShape.Rectangle)
+                //{
+                //    bResult = true;
+                //}
+
+                else
                 {
                     bResult = true;
                 }
