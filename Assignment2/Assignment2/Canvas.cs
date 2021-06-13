@@ -179,11 +179,27 @@ namespace Assignment2
 
             if (canvas.GetLength(0) - 4 != 0 && canvas.GetLength(1) - 4 != 0 && canvas.GetLength(0) != 0 && canvas.GetLength(1) != 0)
             {
-                if (canvas.GetLength(0) == canvas.GetLength(1) && canvas[2, 2] != canvas[2, canvas.GetLength(1) - 3] && shape == EShape.IsoscelesRightTriangle)
+
+                if (canvas[2, 2] == '*' && canvas[2, canvas.GetLength(1) - 3] == '*' && shape == EShape.Rectangle)
                 {
                     bResult = true;
                 }
 
+                else if (canvas[2, 2] != '*' && canvas[2, canvas.GetLength(1) - 3] != '*' && shape == EShape.Rectangle)
+                {
+                    bResult = false;
+                }
+
+                else if (canvas[2, 2] == '*' && canvas[2, canvas.GetLength(1) - 3] == ' ' && shape == EShape.IsoscelesRightTriangle)
+                {
+                    bResult = true;
+                }
+
+                else if (canvas.GetLength(0) != canvas.GetLength(1) && canvas[2, 2] != '*' && canvas[2, canvas.GetLength(1) - 3] != ' ' && shape == EShape.IsoscelesRightTriangle)
+                {
+                    bResult = false;
+                }
+                    
                 else if (canvas.GetLength(0) == canvas.GetLength(1) && canvas.GetLength(1) % 2 != 0 && shape == EShape.Circle)
                 {
                     bResult = true;
@@ -194,10 +210,11 @@ namespace Assignment2
                     bResult = true;
                 }
 
-                else if (canvas[2, 2] == canvas[2, canvas.GetLength(1) - 3] && shape == EShape.Rectangle)
+                else if (canvas.GetLength(1) - 4 != (canvas.GetLength(0) - 4) * 2 - 1 && shape == EShape.IsoscelesTriangle)
                 {
-                    bResult = true;
+                    bResult = false;
                 }
+
             }
 
             return bResult;
@@ -208,12 +225,7 @@ namespace Assignment2
 
 //if (canvas.GetLength(0) - 4 == 1 && canvas.GetLength(1) - 4 == 1)
 //{
-//    if (canvas[2, 2] == '*' && shape == EShape.IsoscelesRightTriangle)
-//    {
-//        bResult = true;
-//    }
-
-//    else if (canvas[2, 2] == '*' && shape == EShape.Rectangle)
+//    if (canvas[2, 2] == '*' && canvas[2, canvas.GetLength(1) - 3] == '*' && shape == EShape.Rectangle)
 //    {
 //        bResult = true;
 //    }
@@ -224,6 +236,11 @@ namespace Assignment2
 //    }
 
 //    else if (canvas.GetLength(0) == canvas.GetLength(1) && canvas.GetLength(1) % 2 != 0 && shape == EShape.Circle)
+//    {
+//        bResult = true;
+//    }
+
+//    else if (canvas[2, 2] == '*' && shape == EShape.IsoscelesRightTriangle)
 //    {
 //        bResult = true;
 //    }
